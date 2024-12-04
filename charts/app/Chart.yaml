@@ -5,7 +5,23 @@ description: app Helm chart.
   
 
 dependencies:
-  - name: first-child
-    condition: prod.enabled
-  - name: second-child
-    condition: dev.enabled
+  - name: prod1-app
+    condition: prod.prod1,global.app.enabled
+    tags:
+      - backend
+      - prod1
+  - name: prod1-ui
+    condition: prod.prod1,global.app.enabled
+    tags:
+      - front
+      - prod1
+  - name: prod2-app
+    condition: global.app.enabled
+    tags:
+      - backend
+      - prod2
+  - name: prod2-ui
+    condition: global.app.enabled
+    tags:
+      - front
+      - prod2

@@ -1,5 +1,5 @@
 apiVersion: v2
-name: second-child
+name: prod1-app
 description: Helm chart for child chart.
 
 version: 0.0.1

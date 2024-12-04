@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-appName: "first-child"
+appName: "prod2-ui"
 kubeApiVersion: "apps/v1"
 replicaCount: 1
 
