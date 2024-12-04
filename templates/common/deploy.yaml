@@ -1,0 +1,37 @@
+{{/*
+Default Template for Deployment. All Sub-Charts under this Chart can include the below template.
+*/}}
+{{- define "parent-chart.deploymenttemplate" }}
+apiVersion: {{ .Values.kubeApiVersion }}
+kind: Deployment
+metadata:
+  name: {{ .Values.appName  }}
+spec:
+  replicas: {{ .Values.replicaCount  }}
+  selector:
+    matchLabels:
+      app: {{ .Values.appName  }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName  }}
+    spec:
+      containers:
+        - name: {{ .Values.appName }}
+          image: "{{ .Values.image.imageName }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+{{- end }}
+
+
