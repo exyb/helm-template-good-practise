@@ -1,3 +1,4 @@
+{{- include "applibchart.deploy" (list . "app.deployment") -}}
 {{- define "app.deployment" -}}
 spec:
   template:
@@ -12,10 +13,6 @@ spec:
               protocol: TCP
           readinessProbe:
             httpGet:
-              path: /
+              path: /healthz
               port: http
 {{- end -}}
-{{- $appDeploy := fromYaml (include "app.deployment" .) -}}
-{{- $defaultDeploy := fromYaml (include "parent-chart.deploymenttemplate" .) -}}
-{{- $deploy := merge $appDeploy $defaultDeploy -}}
-{{ toYaml $deploy }}

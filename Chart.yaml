@@ -4,5 +4,7 @@ version: 0.0.1
 description: Parent Helm chart.
   
 dependencies:
-  - name: "app"
+  - name: applibchart
+  - name: app
+  
 

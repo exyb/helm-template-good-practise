@@ -1,7 +1,4 @@
-{{/*
-Default Template for Deployment. All Sub-Charts under this Chart can include the below template.
-*/}}
-{{- define "parent-chart.deploymenttemplate" }}
+{{- define "applibchart.deploy.tpl" }}
 apiVersion: {{ .Values.kubeApiVersion }}
 kind: Deployment
 metadata:
@@ -35,3 +32,6 @@ spec:
 {{- end }}
 
 
+{{- define "applibchart.deploy" -}}
+{{- include "applibchart.util.merge" (append . "applibchart.deploy.tpl") -}}
+{{- end -}}

@@ -1,1 +1,1 @@
-{{ include "parent-chart.servicetemplate" . }}
+{{ include "applibchart.service.tpl" . }}

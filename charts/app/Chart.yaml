@@ -16,12 +16,7 @@ dependencies:
       - front
       - prod1
   - name: prod2-app
-    condition: global.app.enabled
+    condition: prod.prod2,global.app.enabled
     tags:
       - backend
-      - prod2
-  - name: prod2-ui
-    condition: global.app.enabled
-    tags:
-      - front
       - prod2
